@@ -35,8 +35,6 @@ export default function Home() {
     }
     document.title = "Thenia13";
 
-    console.log(Games)
-
     return (<Card id="mainCard">
         <CardActionArea onClick={() => goToGame(1)}>
             <CardMedia

@@ -30,8 +30,6 @@ export default function GameById(){
     }
     document.title = Game.Name;
 
-    console.log(Game)
-
     return (<Card id="mainCard">
             <CardMedia
                 component="img"

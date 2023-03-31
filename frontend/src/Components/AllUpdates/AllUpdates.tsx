@@ -30,7 +30,7 @@ export default function AllUpdates({page = 0, gameId = 0}: { page?: number, game
     if (!Updates) {
         return (<div>ERROR</div>);
     }
-    console.log(Updates)
+
     return <>{Updates.map((update) => <Card key={update.Id}
                                             sx={{backgroundColor: '#4a4a42a3', display: 'flex', margin: 5}}
                                             style={{border: "2px solid black"}}>
