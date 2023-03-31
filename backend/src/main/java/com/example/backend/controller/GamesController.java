@@ -1,11 +1,14 @@
 package com.example.backend.controller;
 
 import com.example.backend.model.Game;
-import com.example.backend.model.Update;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.management.Descriptor;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("games")
@@ -16,45 +19,37 @@ public class GamesController {
     @GetMapping("/all")
     public List<Game> AllGames() {
         var game = new Game();
-        game.Id = 0;
-        game.Name = "Test";
-        game.Description = "Test description";
-        game.Done.addAll(Arrays.asList("------", "------", "------"));
-        game.InProgress.addAll(Arrays.asList("------", "------", "------"));
-        game.SomeIdeas.addAll(Arrays.asList("Nothing yet", "Nothing yet"));
-        game.Future.add("The Game");
+        game.Id = 1;
+        game.Name = "Galactic Odyssey";
+        game.Description = "In Galactic Odyssey, you are the captain of a starship exploring the vast expanse of the universe. Discover new planets, encounter strange alien species, and engage in epic space battles as you chart a course through the stars.";
         game.StartingDate = new Date();
 
-        return List.of(game);
+        var game2 = new Game();
+        game2.Id = 2;
+        game2.Name = "Shadow Realms";
+        game2.Description = "In Shadow Realms, you play as a member of a team of powerful magic users who must work together to battle supernatural threats and uncover the mysteries of a dark, mystical world.";
+        game2.StartingDate = new Date();
+
+        return List.of(game, game2);
     }
 
     @GetMapping("/{gameId}")
     public Game Game(@PathVariable int gameId) {
         var game = new Game();
-        game.Id = gameId;
-        game.Name = "Test";
-        game.Description = "Test description";
-        game.Done.addAll(Arrays.asList("------", "------", "------"));
-        game.InProgress.addAll(Arrays.asList("------", "------", "------"));
-        game.SomeIdeas.addAll(Arrays.asList("Nothing yet", "Nothing yet"));
-        game.Future.add("The Game");
-        game.StartingDate = new Date();
+        switch (gameId){
+            case 1:
+                game.Id = 1;
+                game.Name = "Galactic Odyssey";
+                game.Description = "In Galactic Odyssey, you are the captain of a starship exploring the vast expanse of the universe. Discover new planets, encounter strange alien species, and engage in epic space battles as you chart a course through the stars.";
+                game.StartingDate = new Date();
 
+            case 2:
+                game.Id = 2;
+                game.Name = "Shadow Realms";
+                game.Description = "In Shadow Realms, you play as a member of a team of powerful magic users who must work together to battle supernatural threats and uncover the mysteries of a dark, mystical world.";
+                game.StartingDate = new Date();
+        }
         return game;
-    }
-
-    @GetMapping("/{gameId}/updates")
-    public List<Update> Updates(@PathVariable int gameId) {
-        var update = new Update();
-        update.Id = 0;
-        update.GameId = gameId;
-        update.Name = "Test";
-        update.Version = 0.01;
-        update.Description = "Test Description";
-        update.PatchNote.addAll(Arrays.asList("Nothing", "Nothing"));
-        update.Date = new Date();
-
-        return List.of(update, update);
     }
 
 }
