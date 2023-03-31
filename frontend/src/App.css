@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.layout{
+  background-image: url(Images/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  padding-top:10vh;
+  padding-bottom:10vh;
+
+}
