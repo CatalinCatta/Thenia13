@@ -1,16 +1,35 @@
 package com.example.backend.model;
 
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
+@Entity
+@Table(name = "games")
 public class Update {
-    public int Id;
-    public int GameId;
-    public String Name;
-    public double Version;
-    public String Thumbnail;
-    public String Description;
-    public ArrayList<String> PatchNote = new ArrayList<>();
-    public Date Date;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int id;
+
+    public int gameId;
+
+    public String name;
+
+    public double version;
+
+    public String thumbnail;
+
+    public String description;
+
+    @ElementCollection
+    public ArrayList<String> patchNote = new ArrayList<>();
+
+    public Date date;
 }
