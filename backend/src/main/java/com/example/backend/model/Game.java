@@ -1,55 +1,171 @@
 package com.example.backend.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "games")
 public class Game {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long id;
-
-    public String name;
-
-    public String description;
-
-    public String story;
-
+    private long id;
+    private String name;
+    @Column(length = 1000)
+    private String thumbnail;
+    @Column(length = 1000)
+    private String description;
+    private Date startingDate = new Date();;
+    @Column(length = 1000)
+    private String story;
+    @Column(length = 1000)
+    private String icon;
+    private Date releaseDate;
     @ElementCollection
-    public ArrayList<String> done = new ArrayList<>();
-
+    private List<String> done = new ArrayList<>();
     @ElementCollection
-    public ArrayList<String> inProgress = new ArrayList<>();
-
+    private List<String> inProgress = new ArrayList<>();
     @ElementCollection
-    public ArrayList<String> future = new ArrayList<>();
-
+    private List<String> future = new ArrayList<>();
     @ElementCollection
-    public ArrayList<String> someIdeas = new ArrayList<>();
-
+    private List<String> someIdeas = new ArrayList<>();
     @ElementCollection
-    public ArrayList<String> screenshots = new ArrayList<>();
-
+    private List<String> screenshots = new ArrayList<>();
     @ElementCollection
-    public ArrayList<String> trailers = new ArrayList<>();
-
+    private List<String> trailers = new ArrayList<>();
     @ElementCollection
-    public ArrayList<String> gameplay = new ArrayList<>();
+    private List<String> gameplay = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "post",
+            orphanRemoval = true)
+    private List<Update> updates = new ArrayList<>();
 
-    public String thumbnail;
+    public long getId() {
+        return id;
+    }
 
-    public String icon;
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    public Date startingDate;
+    public String getName() {
+        return name;
+    }
 
-    public Date realeaseDate;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getStartingDate() {
+        return startingDate;
+    }
+
+    public void setStartingDate(Date startingDate) {
+        this.startingDate = startingDate;
+    }
+
+    public String getStory() {
+        return story;
+    }
+
+    public void setStory(String story) {
+        this.story = story;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public List<String> getDone() {
+        return done;
+    }
+
+    public void setDone(List<String> done) {
+        this.done = done;
+    }
+
+    public List<String> getInProgress() {
+        return inProgress;
+    }
+
+    public void setInProgress(List<String> inProgress) {
+        this.inProgress = inProgress;
+    }
+
+    public List<String> getFuture() {
+        return future;
+    }
+
+    public void setFuture(List<String> future) {
+        this.future = future;
+    }
+
+    public List<String> getSomeIdeas() {
+        return someIdeas;
+    }
+
+    public void setSomeIdeas(List<String> someIdeas) {
+        this.someIdeas = someIdeas;
+    }
+
+    public List<String> getScreenshots() {
+        return screenshots;
+    }
+
+    public void setScreenshots(List<String> screenshots) {
+        this.screenshots = screenshots;
+    }
+
+    public List<String> getTrailers() {
+        return trailers;
+    }
+
+    public void setTrailers(List<String> trailers) {
+        this.trailers = trailers;
+    }
+
+    public List<String> getGameplay() {
+        return gameplay;
+    }
+
+    public void setGameplay(List<String> gameplay) {
+        this.gameplay = gameplay;
+    }
 }
