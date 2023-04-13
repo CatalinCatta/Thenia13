@@ -2,14 +2,13 @@ package com.example.backend.controller;
 
 import com.example.backend.dao.GameRepository;
 import com.example.backend.model.Game;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/games")
@@ -21,16 +20,12 @@ public class GamesController {
         this.gameRepository = gameRepository;
     }
 
-    @PostMapping
-    public List<Game> create() {
-        return gameRepository.findAll();
-    }
     @GetMapping
     public List<Game> allGames() {
         return gameRepository.findAll();
     }
-    @DeleteMapping("/{id}")
-    public List<Game> delete(@PathVariable String id) {
-        return gameRepository.findAll();
+    @GetMapping("/{id}")
+    public Optional<Game> gameById(@PathVariable long id) {
+        return gameRepository.findById(id);
     }
 }

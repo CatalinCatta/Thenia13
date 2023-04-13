@@ -8,12 +8,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Data
+@NoArgsConstructor
 @Entity
+@Table(name = "games")
 public class Game {
 
     @Id
@@ -21,11 +27,9 @@ public class Game {
     private long id;
     private String name;
     @Column(length = 1000)
-    private String thumbnail;
-    @Column(length = 1000)
     private String description;
-    private Date startingDate = new Date();;
-    @Column(length = 1000)
+    private Date startingDate = new Date();
+    @Column(length = 2000)
     private String story;
     @Column(length = 1000)
     private String icon;
@@ -44,9 +48,7 @@ public class Game {
     private List<String> trailers = new ArrayList<>();
     @ElementCollection
     private List<String> gameplay = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "post",
-            orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "game", orphanRemoval = true)
     private List<Update> updates = new ArrayList<>();
 
     public long getId() {
@@ -63,14 +65,6 @@ public class Game {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
     }
 
     public String getDescription() {
@@ -168,4 +162,13 @@ public class Game {
     public void setGameplay(List<String> gameplay) {
         this.gameplay = gameplay;
     }
+
+    public List<Update> getUpdates() {
+        return updates;
+    }
+
+    public void setUpdates(List<Update> updates) {
+        this.updates = updates;
+    }
+
 }

@@ -1,28 +1,46 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+@EqualsAndHashCode
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
+@Table(name = "updates")
 public class Update{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+    @Column(length = 100000)
     private String thumbnail;
     private String description;
     private Date date;
-    private int gameId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Game game;
     private double version;
     @ElementCollection
-    private ArrayList<String> patchNote = new ArrayList<>();
+    private List<String> patchNote = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -64,12 +82,12 @@ public class Update{
         this.date = date;
     }
 
-    public int getGameId() {
-        return gameId;
+    public Game getGame() {
+        return game;
     }
 
-    public void setGameId(int gameId) {
-        this.gameId = gameId;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public double getVersion() {
@@ -80,11 +98,11 @@ public class Update{
         this.version = version;
     }
 
-    public ArrayList<String> getPatchNote() {
+    public List<String> getPatchNote() {
         return patchNote;
     }
 
-    public void setPatchNote(ArrayList<String> patchNote) {
+    public void setPatchNote(List<String> patchNote) {
         this.patchNote = patchNote;
     }
 }
