@@ -5,39 +5,30 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
+import {UpdateModel} from "../../Model/UpdateModel";
 
-interface UpdateModel {
-    Id: number;
-    Name: string;
-    Description: string;
-    GameId: number;
-    Thumbnail: string;
-    Version : string
-}
 
 export default function AllUpdates({page = 0, gameId = 0}: { page?: number, gameId?: number }) {
-    const [Updates, SetUpdates] = useState<[UpdateModel]>([{Id: 0, Name: "", Description: "", GameId: gameId, Thumbnail: "", Version: ""}]);
-    let url = page === 0 ? `http://localhost:8081/updates/game/${gameId}` : `http://localhost:8081/updates/all/${page}`;
+    const [Updates, SetUpdates] = useState<[UpdateModel]>();
+    let url = page === 0 ? `http://localhost:8081/api/updates/game/${gameId}` : `http://localhost:8081/api/updates/page/${page}`;
 
 
     useEffect(() => {
         fetch(url)
             .then((response) => response.json())
-            .then((json) => SetUpdates(json))
+            .then((json) => { SetUpdates(json) })
             .catch((error) => console.log(error));
     }, [page]);
-
     if (!Updates) {
         return (<div>ERROR</div>);
     }
-
-    return <>{Updates.map((update) => <Card key={update.Id}
+    return <>{Updates.map((update : UpdateModel) => <Card key={update.id}
                                             sx={{backgroundColor: '#4a4a42a3', display: 'flex', margin: 5}}
                                             style={{border: "2px solid black"}}>
         <CardActionArea>
             <CardContent>
                 <Typography component="div" variant="h5">
-                    {update.Name} - {update.GameId === 1? "Galactic Odyssey" : "Shadow Realms"} V{update.Version}
+                    {update.name} V{update.version}
                 </Typography>
             </CardContent>
             <CardContent sx={{padding: 0}}>
@@ -46,8 +37,8 @@ export default function AllUpdates({page = 0, gameId = 0}: { page?: number, game
                         <CardMedia
                             component="img"
                             sx={{width: 151}}
-                            src={update.Thumbnail}
-                            alt={`update ${update.Name}`}
+                            src={update.thumbnail}
+                            alt={`update ${update.name}`}
                         />
                         <Box sx={{display: 'flex', flexDirection: 'inherit'}}>
                             <CardContent>
@@ -58,7 +49,7 @@ export default function AllUpdates({page = 0, gameId = 0}: { page?: number, game
                                     WebkitLineClamp: "3",
                                     WebkitBoxOrient: "vertical",
                                 }}>
-                                    {update.Description}
+                                    {update.description}
                                 </Typography>
                             </CardContent>
                         </Box>
