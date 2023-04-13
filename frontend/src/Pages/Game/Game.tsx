@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import React from 'react';
 import CardMedia from "@mui/material/CardMedia";
-import gameTemplate from "../../Images/gameTemplate.jpg";
+import gameTemplate from "../../Images/gameTemplate1.jpg";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import AllUpdates from "../../Components/AllUpdates/AllUpdates";
