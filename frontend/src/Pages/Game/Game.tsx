@@ -1,12 +1,9 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import React from 'react';
-import CardMedia from "@mui/material/CardMedia";
-import gameTemplate from "../../Images/gameTemplate1.jpg";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
+import {Card, Typography, CardContent, CardMedia} from "@mui/material";
+import game1Template from "../../Images/gameTemplate1.jpg";
+import game2Template from "../../Images/gameTemplate2.jpg";
 import AllUpdates from "../../Components/AllUpdates/AllUpdates";
-import Card from "@mui/material/Card";
 import {GameModel} from "../../Model/GameModel";
 
 
@@ -33,7 +30,7 @@ export default function GameById(){
             <CardMedia
                 component="img"
                 height="250"
-                image={gameTemplate}
+                image={Game.id === 1? game1Template : game2Template}
                 alt="game X"
             />
         <CardContent>

@@ -1,23 +1,18 @@
-import {useEffect, useState} from "react";
-import React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import game1Template from '../../Images/gameTemplate1.jpg';
-import game2Template from '../../Images/gameTemplate2.jpg';
-import './home.css';
+import React, {useEffect, useState} from "react";
+import {CardActionArea, Pagination, Typography, CardMedia, CardContent, Card} from '@mui/material';
+import game1Template from '../../Images/test.jpg';
+import game2Template from '../../Images/test.jpg';
 import AllUpdates from "../../Components/AllUpdates/AllUpdates";
-import {CardActionArea, Pagination} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import {GameModel} from "../../Model/GameModel";
 import Carousel from 'react-material-ui-carousel';
+import './home.css';
 
 export default function Home() {
     const [Games, SetGames] = useState<[GameModel]>();
     let navigate = useNavigate();
 
-    function goToGame(gameId : number){
+    function goToGame(gameId: number) {
         navigate(`/${gameId}`);
     }
 
@@ -26,6 +21,7 @@ export default function Home() {
     function handlePageChange(event: React.ChangeEvent<unknown>, newPage: number) {
         setCurrentPage(newPage);
     }
+
     useEffect(() => {
         fetch(`http://localhost:8081/api/games`)
             .then((response) => response.json())
@@ -40,13 +36,13 @@ export default function Home() {
     }
     document.title = "Thenia13";
 
-    return (<Card id="mainCard">
+    return (<Card >
 
         <Carousel>
             <CardActionArea onClick={() => goToGame(1)}>
                 <CardMedia
                     component="img"
-                    height="250"
+                    height="400"
                     image={game1Template}
                     alt="game1"
                 />
@@ -54,18 +50,18 @@ export default function Home() {
             <CardActionArea onClick={() => goToGame(2)}>
                 <CardMedia
                     component="img"
-                    height="250"
+                    height="400"
                     image={game2Template}
                     alt="game1"
                 />
             </CardActionArea>
         </Carousel>
-        <CardContent>
+        <CardContent id="mainCard">
             <Typography gutterBottom variant="h5" component="div">
                 LATEST NEWS
             </Typography>
             <AllUpdates page={currentPage}/>
-            <Pagination count={2} page={currentPage} onChange={handlePageChange} />
+            <Pagination count={2} page={currentPage} onChange={handlePageChange}/>
         </CardContent>
     </Card>);
 }
