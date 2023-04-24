@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {CardActionArea, Pagination, Typography, CardMedia, CardContent, Card} from '@mui/material';
-import game1Template from '../../Images/test.jpg';
-import game2Template from '../../Images/test.jpg';
+import game1Template from '../../Images/gameTemplate1.jpg';
+import game2Template from '../../Images/gameTemplate2.jpg';
 import AllUpdates from "../../Components/AllUpdates/AllUpdates";
 import {useNavigate} from "react-router-dom";
 import {GameModel} from "../../Model/GameModel";
@@ -36,9 +36,8 @@ export default function Home() {
     }
     document.title = "Thenia13";
 
-    return (<Card >
-
-        <Carousel>
+    return (<Card style={{background: "transparent"}}>
+        <Carousel sx={{bgcolor: 'black', borderBottom: "5px solid forestgreen"}}>
             <CardActionArea onClick={() => goToGame(1)}>
                 <CardMedia
                     component="img"
@@ -57,7 +56,7 @@ export default function Home() {
             </CardActionArea>
         </Carousel>
         <CardContent id="mainCard">
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h5" component="div" id="news">
                 LATEST NEWS
             </Typography>
             <AllUpdates page={currentPage}/>

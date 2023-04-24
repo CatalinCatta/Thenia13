@@ -5,7 +5,7 @@ import React, {useState, MouseEvent} from "react";
 
 
 const pages = ['Games', 'Contact', 'FAQ', 'About'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Account', 'Logout'];
 
 export default function Navbar(){
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);

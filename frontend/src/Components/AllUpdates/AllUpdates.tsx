@@ -1,12 +1,7 @@
-import {useEffect, useState} from "react";
-import React from 'react';
-import {Box, CardActionArea} from "@mui/material";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
+import React, {useEffect, useState} from "react";
+import {Card, Typography, CardContent, CardMedia, Box, CardActionArea} from "@mui/material";
 import {UpdateModel} from "../../Model/UpdateModel";
-
+import "./allUpdate.css";
 
 export default function AllUpdates({page = 0, gameId = 0}: { page?: number, gameId?: number }) {
     const [Updates, SetUpdates] = useState<[UpdateModel]>();
@@ -16,27 +11,27 @@ export default function AllUpdates({page = 0, gameId = 0}: { page?: number, game
     useEffect(() => {
         fetch(url)
             .then((response) => response.json())
-            .then((json) => { SetUpdates(json) })
+            .then((json) => {
+                SetUpdates(json)
+            })
             .catch((error) => console.log(error));
     }, [page]);
     if (!Updates) {
         return (<div>ERROR</div>);
     }
-    return <>{Updates.map((update : UpdateModel) => <Card key={update.id}
-                                            sx={{backgroundColor: '#4a4a42a3', display: 'flex', margin: 5}}
-                                            style={{border: "2px solid black"}}>
+    return <>{Updates.map((update: UpdateModel) => <Card key={update.id} id="patchNote">
         <CardActionArea>
             <CardContent>
-                <Typography component="div" variant="h5">
+                <Typography component="div" variant="h5" id="title">
                     {update.name} V{update.version}
                 </Typography>
             </CardContent>
             <CardContent sx={{padding: 0}}>
                 <Card>
-                    <Box sx={{display: 'flex', flexDirection: 'inherit', backgroundColor: '#4a4a42a3', height: 100, paddingBottom: 2, paddingLeft: 1}}>
+                    <Box sx={{display: 'flex', flexDirection: 'inherit', height: 100, padding: 2}}>
                         <CardMedia
                             component="img"
-                            sx={{width: 151}}
+                            sx={{width: 150}}
                             src={update.thumbnail}
                             alt={`update ${update.name}`}
                         />

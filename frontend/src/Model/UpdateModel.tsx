@@ -4,5 +4,5 @@ export interface UpdateModel {
     description: string;
     game_id: number;
     thumbnail: string;
-    version : string
+    version: string
 }
