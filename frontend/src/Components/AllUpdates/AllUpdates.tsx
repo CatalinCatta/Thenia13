@@ -36,8 +36,8 @@ export default function AllUpdates({page = 0, gameId = 0}: { page?: number, game
                             alt={`update ${update.name}`}
                         />
                         <Box sx={{display: 'flex', flexDirection: 'inherit'}}>
-                            <CardContent>
-                                <Typography variant="subtitle1" color="text.secondary" component="div" sx={{
+                            <CardContent sx={{paddingTop: 0}}>
+                                <Typography variant="h6" color="text.primary" component="div" sx={{
                                     overflow: "hidden",
                                     textOverflow: "ellipsis",
                                     display: "-webkit-box",
