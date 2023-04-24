@@ -18,3 +18,7 @@
     border-radius: 0 0 5rem 5rem;
     background: #000000db;
 }
+
+.MuiPagination-root button {
+    color: white !important;
+}

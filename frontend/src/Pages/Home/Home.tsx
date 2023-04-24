@@ -10,8 +10,8 @@ import './home.css';
 
 export default function Home() {
     const [Games, SetGames] = useState<[GameModel]>();
+    const [Pages, SetPages] = useState(2);
     let navigate = useNavigate();
-
     function goToGame(gameId: number) {
         navigate(`/${gameId}`);
     }
@@ -31,6 +31,16 @@ export default function Home() {
             .catch((error) => console.log(error));
     }, []);
 
+
+    useEffect(() => {
+        fetch(`http://localhost:8081/api/updates/pagesNumber`)
+            .then((response) => response.json())
+            .then((json) => {
+                SetPages(json)
+            })
+            .catch((error) => console.log(error));
+    }, []);
+    console.log(Pages)
     if (!Games) {
         return (<div>ERROR</div>);
     }
@@ -60,7 +70,7 @@ export default function Home() {
                 LATEST NEWS
             </Typography>
             <AllUpdates page={currentPage}/>
-            <Pagination count={2} page={currentPage} onChange={handlePageChange}/>
+            <Pagination count={Pages} page={currentPage} style={{padding: "3vh 5vw 0"}} onChange={handlePageChange}/>
         </CardContent>
     </Card>);
 }

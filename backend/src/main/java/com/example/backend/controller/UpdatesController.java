@@ -1,10 +1,7 @@
 package com.example.backend.controller;
 
-import com.example.backend.dao.GameRepository;
 import com.example.backend.dao.UpdateRepository;
-import com.example.backend.model.Game;
 import com.example.backend.model.Update;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,5 +34,9 @@ public class UpdatesController {
     @GetMapping("/{id}")
     public Optional<Update> updateById(@PathVariable long id) {
         return updateRepository.findById(id);
+    }
+    @GetMapping("/pagesNumber")
+    public long getPageNumber() {
+        return updateRepository.count() / 5 + 1;
     }
 }

@@ -1,8 +1,7 @@
 import {MenuItem, Tooltip, Button, Avatar, Container, Menu, IconButton, Typography, Toolbar, Box, AppBar} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import AdbIcon from '@mui/icons-material/Adb';
 import React, {useState, MouseEvent} from "react";
-
+import logo from "../../Images/logo.png";
 
 const pages = ['Games', 'Contact', 'FAQ', 'About'];
 const settings = ['Profile', 'Account', 'Logout'];
@@ -31,7 +30,6 @@ export default function Navbar(){
             <AppBar sx={{ backgroundColor: "darkGreen"}}>
             <Container maxWidth="xl">
                 <Toolbar>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -47,6 +45,7 @@ export default function Navbar(){
                             textDecoration: 'none',
                         }}
                     >
+                        <img src={logo} alt="logo" height="35px" />
                         THENIA13
                     </Typography>
 
@@ -86,7 +85,6 @@ export default function Navbar(){
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -103,6 +101,7 @@ export default function Navbar(){
                             textDecoration: 'none',
                         }}
                     >
+                        <img src={logo} alt="logo" height="35px"/>
                         THENIA13
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
