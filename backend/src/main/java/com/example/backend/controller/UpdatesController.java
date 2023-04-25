@@ -1,6 +1,6 @@
 package com.example.backend.controller;
 
-import com.example.backend.dao.UpdateRepository;
+import com.example.backend.repositories.UpdateRepository;
 import com.example.backend.model.Update;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

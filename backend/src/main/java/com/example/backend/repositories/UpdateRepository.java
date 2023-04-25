@@ -1,4 +1,4 @@
-package com.example.backend.dao;
+package com.example.backend.repositories;
 
 import com.example.backend.model.Update;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,6 +1,6 @@
 package com.example.backend;
 
-import com.example.backend.dao.GameRepository;
+import com.example.backend.repositories.GameRepository;
 import com.example.backend.model.Game;
 import com.example.backend.model.Update;
 import org.springframework.boot.CommandLineRunner;
