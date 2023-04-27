@@ -2,6 +2,8 @@ package com.example.backend.controller;
 
 import com.example.backend.repositories.GameRepository;
 import com.example.backend.model.Game;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
