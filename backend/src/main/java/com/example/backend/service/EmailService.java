@@ -1,5 +1,6 @@
-package com.example.backend.email;
+package com.example.backend.service;
 
+import com.example.backend.email.EmailSender;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.AllArgsConstructor;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class EmailService implements EmailSender{
+public class EmailService implements EmailSender {
 
     private final static Logger LOGGER = LogManager.getLogger(EmailService.class);
 

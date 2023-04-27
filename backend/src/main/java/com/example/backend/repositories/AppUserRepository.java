@@ -1,5 +1,6 @@
-package com.example.backend.model.appuser;
+package com.example.backend.repositories;
 
+import com.example.backend.model.appuser.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

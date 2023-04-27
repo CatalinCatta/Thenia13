@@ -30,7 +30,7 @@ public class WebSecurityConfig implements WebSecurityConfigurer {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/games/**")
+                .requestMatchers("/api/games/**", "api/updates/**", "api/accounts/signUp", "api/accounts/logIn")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

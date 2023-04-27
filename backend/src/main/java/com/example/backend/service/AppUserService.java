@@ -1,8 +1,8 @@
-package com.example.backend.model.appuser;
+package com.example.backend.service;
 
-import com.example.backend.email.EmailService;
+import com.example.backend.model.appuser.AppUser;
 import com.example.backend.registration.token.ConfirmationToken;
-import com.example.backend.registration.token.ConfirmationTokenService;
+import com.example.backend.repositories.AppUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -60,6 +60,26 @@ public class AppUserService implements UserDetailsService {
 
         var emailSender = new EmailService(mailSender);
         emailSender.send(appUser.getEmail(), "test");
+
+        return token;
+    }
+
+    public String logInUser(String email, String password){
+        var user = appUserRepository.findByEmail(email);
+        if (user.isEmpty() || !bCryptPasswordEncoder.matches(password, user.get().getPassword())){
+            throw new IllegalStateException("email-password combination is not a match");
+        }
+
+        String token = UUID.randomUUID().toString();
+        ConfirmationToken confirmationToken = new ConfirmationToken(
+                token,
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(15),
+                user.get()
+        );
+        confirmationTokenService.saveConfirmationToken(
+                confirmationToken
+        );
 
         return token;
     }

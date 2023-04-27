@@ -2,6 +2,7 @@ package com.example.backend.controller;
 
 import com.example.backend.repositories.UpdateRepository;
 import com.example.backend.model.Update;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,16 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 
-//@CrossOrigin
 @RestController
+@AllArgsConstructor
 @RequestMapping("api/updates")
 public class UpdatesController {
 
     private final UpdateRepository updateRepository;
-
-    public UpdatesController(UpdateRepository updateRepository) {
-        this.updateRepository = updateRepository;
-    }
 
     @GetMapping("/page/{id}")
     public List<Update> getListOnPage(@PathVariable int id) {
