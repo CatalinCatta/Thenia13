@@ -1,5 +1,6 @@
 package com.example.backend.registration;
 
+import com.example.backend.email.EmailValidator;
 import com.example.backend.model.appuser.AppUser;
 import com.example.backend.model.appuser.AppUserRole;
 import com.example.backend.model.appuser.AppUserService;

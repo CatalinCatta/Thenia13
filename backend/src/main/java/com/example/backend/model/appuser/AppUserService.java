@@ -1,6 +1,6 @@
 package com.example.backend.model.appuser;
 
-import com.example.backend.registration.EmailService;
+import com.example.backend.email.EmailService;
 import com.example.backend.registration.token.ConfirmationToken;
 import com.example.backend.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
