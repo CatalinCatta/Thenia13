@@ -1,0 +1,77 @@
+#modalBox {
+    flex-wrap: wrap;
+    margin: auto;
+    display: flex;
+    background-color: white;
+    width: 50%;
+    height: 50%;
+    border: 10px double black;
+    border-radius: 2rem;
+    align-items: center;
+    box-shadow: 0 0 100vh forestgreen;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 5vh;
+}
+
+.input {
+    width: 50%;
+}
+
+.MuiOutlinedInput-notchedOutline {
+    border-color: black !important;
+    box-shadow: 0 15px 30px gray;
+}
+
+.title {
+    background-color: #464c475c;
+    box-shadow: 0 15px 30px gray;
+    margin: auto;
+    padding: 10px 20%;
+    border-radius: 0 0 2rem 2rem;
+
+}
+
+.register {
+    align-items: center;
+    background-image: linear-gradient(144deg, #40ffaf, #42f345 50%, #79eb00);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(65, 252, 90, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 2%;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.register:active,
+.register:hover {
+    outline: 0;
+}
+
+.register span {
+    background-color: rgb(5, 45, 20);
+    padding: 1vh 6vw;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: 300ms;
+    align-items: center;
+    display: grid;
+}
+
+.register:hover span {
+    background: none;
+}

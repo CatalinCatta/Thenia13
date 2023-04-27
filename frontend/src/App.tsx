@@ -1,6 +1,6 @@
 import {Route, Routes} from "react-router-dom";
 import React from 'react';
-import GameById from "./Pages/Game/Game.tsx";
+import GameById from "./Pages/Game/Game";
 import Home from "./Pages/Home/Home";
 import Navbar from "./Components/Navbar/Navbar";
 import ParticlesComponent from './Components/Particles';

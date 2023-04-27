@@ -12,6 +12,7 @@ export default function Home() {
     const [Games, SetGames] = useState<[GameModel]>();
     const [Pages, SetPages] = useState(2);
     let navigate = useNavigate();
+
     function goToGame(gameId: number) {
         navigate(`/${gameId}`);
     }
@@ -40,7 +41,7 @@ export default function Home() {
             })
             .catch((error) => console.log(error));
     }, []);
-    console.log(Pages)
+
     if (!Games) {
         return (<div>ERROR</div>);
     }

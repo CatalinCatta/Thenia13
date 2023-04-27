@@ -7,7 +7,7 @@ import AllUpdates from "../../Components/AllUpdates/AllUpdates";
 import {GameModel} from "../../Model/GameModel";
 
 
-export default function GameById(){
+export default function GameById() {
     const {gameId} = useParams<{ gameId?: string }>();
 
     const [Game, SetGame] = useState<GameModel>();
@@ -21,18 +21,18 @@ export default function GameById(){
             .catch((error) => console.log(error));
     }, [gameId]);
 
-    if (!Game){
+    if (!Game) {
         return (<div>ERROR</div>);
     }
     document.title = Game.name;
 
     return (<Card id="mainCard">
-            <CardMedia
-                component="img"
-                height="250"
-                image={Game.id === 1? game1Template : game2Template}
-                alt="game X"
-            />
+        <CardMedia
+            component="img"
+            height="250"
+            image={Game.id === 1 ? game1Template : game2Template}
+            alt="game X"
+        />
         <CardContent>
             <Typography gutterBottom variant="h5" component="div" sx={{marginLeft: 5, marginRight: 5}}>
                 About {Game.name}
@@ -40,7 +40,7 @@ export default function GameById(){
             <Typography variant="body2" color="text.secondary" sx={{marginLeft: 5, marginRight: 5}}>
                 {Game.description}
             </Typography>
-            <AllUpdates gameId={ parseInt(gameId || "", 10)}/>
+            <AllUpdates gameId={parseInt(gameId || "", 10)}/>
         </CardContent>
     </Card>);
 }
