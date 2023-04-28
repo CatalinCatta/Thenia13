@@ -25,6 +25,7 @@ export default function Navbar() {
     if (userName === null) {
         userName = "";
     }
+
     console.log(token)
     console.log(userName)
 
@@ -63,6 +64,11 @@ export default function Navbar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const handleLogOut = () => {
+        sessionStorage.clear()
+        // window.location.reload();
+    }
 
     return (
         <Box sx={{flexGrow: 1}}>
@@ -159,7 +165,7 @@ export default function Navbar() {
 
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                                    {token ? (<Avatar>@{userName.charAt(0)}</Avatar>) : (
+                                    {token ? (<Avatar>{userName.charAt(0).toUpperCase()}</Avatar>) : (
                                         <Avatar src="/broken-image.jpg"/>)}
                                 </IconButton>
                             </Tooltip>
@@ -188,7 +194,7 @@ export default function Navbar() {
                                             <Typography textAlign="center">Account</Typography>
                                         </MenuItem>
                                         <MenuItem onClick={handleCloseUserMenu}>
-                                            <Typography textAlign="center">Logout</Typography>
+                                            <Typography textAlign="center" onClick={handleLogOut}>Logout</Typography>
                                         </MenuItem>
                                     </>
                                 ) : (
